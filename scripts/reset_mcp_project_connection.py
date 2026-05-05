@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 import requests
-from azure.identity import DefaultAzureCredential
+from azure.identity import AzureCliCredential
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -548,7 +548,7 @@ def get_management_access_token() -> str:
       可用于调用 ARM 管理接口的 Bearer Token 字符串。
     """
 
-    credential: DefaultAzureCredential = DefaultAzureCredential()
+    credential: AzureCliCredential = AzureCliCredential()
     access_token: str = credential.get_token(MANAGEMENT_SCOPE).token
     return access_token
 
